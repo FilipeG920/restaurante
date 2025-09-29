@@ -6,7 +6,7 @@ class CreateQualificacoes < ActiveRecord::Migration[8.0]
       t.float :nota
       t.float :valor_gasto
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :qualificacoes, :cliente_id
