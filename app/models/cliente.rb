@@ -1,4 +1,6 @@
 class Cliente < ApplicationRecord
+  has_many :qualificacoes
+
   validates :nome, presence: { message: " - deve ser preenchido" }
   validates :nome, uniqueness: { message: " - nome já cadastrado" }
 
@@ -8,5 +10,4 @@ class Cliente < ApplicationRecord
     message: " - deve ser um número entre 0 e 100"
   }
 
-  
 end

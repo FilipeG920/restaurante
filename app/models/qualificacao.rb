@@ -1,4 +1,10 @@
 class Qualificacao < ApplicationRecord
+  belongs_to :cliente
+  belongs_to :restaurante
+
+  validates :cliente_id, :restaurante_id, presence: true
+  validates_associated :cliente, :restaurante
+  
   validates :nota,
     presence: { message: " - deve ser preenchido" },
     numericality: {
