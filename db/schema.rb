@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_22_025853) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_28_234704) do
   create_table "clientes", force: :cascade do |t|
     t.string "nome", limit: 80
     t.integer "idade"
@@ -23,6 +23,30 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_22_025853) do
     t.date "data_de_nascimento"
     t.float "altura"
     t.string "endereco"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pratos", force: :cascade do |t|
+    t.string "nome", limit: 80
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "qualificacoes", force: :cascade do |t|
+    t.integer "cliente_id"
+    t.integer "restaurante_id"
+    t.float "nota"
+    t.float "valor_gasto"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_qualificacoes_on_cliente_id"
+    t.index ["restaurante_id"], name: "index_qualificacoes_on_restaurante_id"
+  end
+
+  create_table "receita", force: :cascade do |t|
+    t.integer "prato_id"
+    t.text "conteudo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
